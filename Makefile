@@ -24,6 +24,7 @@ convert_layer_to_geojson() { \
 	local fixed_layer_name=$$(fix_layer_name "$$layer_name"); \
 	echo "Processing layer: $$layer_name -> $$fixed_layer_name"; \
 	ogr2ogr -f GeoJSONSeq /dev/stdout "$(GDB_PATH)" "$$layer_name" \
+	| jq -c 'del(.properties.Shape_Length, .properties.Shape_Area)' \
 	| jq -c --arg layer "$$fixed_layer_name" '. + {"tippecanoe": {"layer": $$layer, "minzoom": 0, "maxzoom": 14}}' \
 	>> "$(TEMP_DIR)/all_layers.geojsonl"; \
 }
@@ -59,11 +60,13 @@ $(OUTPUT_FILE): $(GDB_PATH) $(LAYERS_FILE) | docs
 		if [ "$$layer_name" = "building" ]; then \
 			echo "Processing layer: $$layer_name -> $$fixed_layer_name (Zoom 14 only)"; \
 			ogr2ogr -f GeoJSONSeq /dev/stdout "$(GDB_PATH)" "$$layer_name" \
+			| jq -c 'del(.properties.Shape_Length, .properties.Shape_Area)' \
 			| jq -c --arg layer "$$fixed_layer_name" '. + {"tippecanoe": {"layer": $$layer, "minzoom": 14, "maxzoom": 14}}' \
 			>> "$(TEMP_DIR)/all_layers.geojsonl"; \
 		else \
 			echo "Processing layer: $$layer_name -> $$fixed_layer_name"; \
 			ogr2ogr -f GeoJSONSeq /dev/stdout "$(GDB_PATH)" "$$layer_name" \
+			| jq -c 'del(.properties.Shape_Length, .properties.Shape_Area)' \
 			| jq -c --arg layer "$$fixed_layer_name" '. + {"tippecanoe": {"layer": $$layer, "minzoom": 0, "maxzoom": 14}}' \
 			>> "$(TEMP_DIR)/all_layers.geojsonl"; \
 		fi; \
@@ -130,6 +133,7 @@ test: | docs
 		local fixed_layer_name=$$(fix_layer_name "$$layer_name"); \
 		echo "Processing layer: $$layer_name -> $$fixed_layer_name"; \
 		ogr2ogr -f GeoJSONSeq /dev/stdout "$(GDB_PATH)" "$$layer_name" \
+		| jq -c 'del(.properties.Shape_Length, .properties.Shape_Area)' \
 		| jq -c --arg layer "$$fixed_layer_name" '. + {"tippecanoe": {"layer": $$layer, "minzoom": 0, "maxzoom": 14}}' \
 		| tippecanoe \
 			--output="output/$${fixed_layer_name}.pmtiles" \

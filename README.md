@@ -301,6 +301,66 @@ You can inspect the PMTiles data interactively using the following link:
 
 [Inspect PMTiles Data](https://pmtiles.io/#url=https%3A%2F%2Fcndg-dgot.github.io%2Fexperimental-dili-beta%2Fa.pmtiles&map=14.32/-8.56292/125.54093)
 
+## 🔍 Elevation Property Issue
+
+### Problem
+The `Elevation` property in the `contourLine` layer is always 0, despite being present in the source GDB.
+
+### Investigation
+Using `ogrinfo`, the property was confirmed to exist in the source data:
+```bash
+ogrinfo -so src/S_0604-374.gdb contourLine
+```
+However, all values are 0. This may indicate an issue with the source data or the conversion process.
+
+### Next Steps
+- Open a GitHub Issue to discuss and resolve this problem.
+- Consider contacting the data provider for clarification.
+
+---
+
+## 🛠️ PMTiles Optimization
+
+### Property Removal
+To optimize the PMTiles output, unnecessary properties such as `Shape_Length` and `Shape_Area` are removed during the conversion process using `jq`:
+```bash
+jq 'del(.properties.Shape_Length, .properties.Shape_Area)'
+```
+This reduces file size and improves performance.
+
+---
+
+## 🌐 Web Viewer Updates
+
+### Initial View
+The map now initializes at:
+- **Center**: `[125.537868, -8.559112]`
+- **Zoom**: `15.76`
+
+### Features
+- **Layer Toggles**: All layers are visible and togglable.
+- **Navigation Controls**: Zoom, pan, and geolocation.
+- **Performance**: Building layer visible only at zoom 14.
+
+---
+
+## 🔧 Updated Makefile Commands
+
+### New Commands
+```bash
+make clean && make build  # Regenerate PMTiles and style.json
+make validate-pkl         # Validate Pkl configuration
+make generate-style       # Generate style.json from Pkl
+```
+
+### Troubleshooting
+#### Elevation Property Issue
+- Confirm property existence: `ogrinfo -so src/S_0604-374.gdb contourLine`
+- Open GitHub Issue for further investigation.
+
+#### PMTiles Inspection
+Use [pmtiles.io](https://pmtiles.io/#url=https%3A%2F%2Fcndg-dgot.github.io%2Fexperimental-dili-beta%2Fa.pmtiles&map=14.32/-8.56292/125.54093) for interactive inspection.
+
 ## 📄 License
 
 The code in this repository is released under the **CC0 1.0 Universal (CC0 1.0) Public Domain Dedication**. This means you can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.
