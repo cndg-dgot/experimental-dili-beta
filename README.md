@@ -295,6 +295,12 @@ make clean
 make build 2>&1 | tee conversion.log
 ```
 
+## 🔍 Inspect PMTiles Data
+
+You can inspect the PMTiles data interactively using the following link:
+
+[Inspect PMTiles Data](https://pmtiles.io/#url=https%3A%2F%2Fcndg-dgot.github.io%2Fexperimental-dili-beta%2Fa.pmtiles&map=14.32/-8.56292/125.54093)
+
 ## 📄 License
 
 The code in this repository is released under the **CC0 1.0 Universal (CC0 1.0) Public Domain Dedication**. This means you can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.
