@@ -1,0 +1,87 @@
+/// Base polygon layers (water, vegetation, artificial coverage)
+module style.layers.BaseLayers
+
+import "../config/Colors.pkl" as colors
+
+/// Background layer
+background: Mapping = new {
+  ["id"] = "background"
+  ["type"] = "background"
+  ["paint"] = new {
+    ["background-color"] = colors.background["main"]
+  }
+}
+
+/// Optional background water from OpenMapTiles
+water: Mapping = new {
+  ["id"] = "water"
+  ["type"] = "fill"
+  ["source"] = "openmaptiles"
+  ["source-layer"] = "water"
+  ["paint"] = new {
+    ["fill-color"] = colors.water["background"]
+    ["fill-opacity"] = 0.7
+  }
+}
+
+/// Water surfaces from our PMTiles data
+waterSurface: Mapping = new {
+  ["id"] = "waterSurface"
+  ["type"] = "fill"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "waterSurface"
+  ["paint"] = new {
+    ["fill-color"] = colors.water["primary"]
+    ["fill-opacity"] = 0.8
+    ["fill-outline-color"] = colors.water["outline"]
+  }
+  ["metadata"] = new {
+    ["z-order"] = 1
+  }
+}
+
+/// Vegetation areas
+vegetation: Mapping = new {
+  ["id"] = "vegetation"
+  ["type"] = "fill"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "vegetation"
+  ["paint"] = new {
+    ["fill-color"] = colors.nature["vegetation"]
+    ["fill-opacity"] = 0.7
+  }
+  ["metadata"] = new {
+    ["z-order"] = 2
+  }
+}
+
+/// Artificial coverage (human-made surfaces)
+artificialCoverage: Mapping = new {
+  ["id"] = "artificialCoverage"
+  ["type"] = "fill"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "artificialCoverage"
+  ["paint"] = new {
+    ["fill-color"] = colors.infrastructure["artificial"]
+    ["fill-opacity"] = 0.6
+  }
+  ["metadata"] = new {
+    ["z-order"] = 3
+  }
+}
+
+/// All base layers in render order
+baseLayers: List = List(
+  waterSurface,
+  vegetation,
+  artificialCoverage
+)
+
+/// Full list including optional background layers
+all: List = List(
+  background,
+  water,
+  waterSurface,
+  vegetation,
+  artificialCoverage
+)

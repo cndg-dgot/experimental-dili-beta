@@ -1,0 +1,524 @@
+{
+  "version": 8,
+  "name": "S_0604-374 Digital Land Information",
+  "metadata": {
+    "source": "S_0604-374.gdb File Geodatabase",
+    "description": "Digital land information visualization for Geological Survey Institute dataset",
+    "license": "CC0 1.0 Universal",
+    "generated": "Automated via Apple Pkl"
+  },
+  "sources": {
+    "pmtiles": {
+      "type": "vector",
+      "url": "pmtiles://a.pmtiles"
+    }
+  },
+  "sprite": "https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite",
+  "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "#f8f8f8"
+      }
+    },
+    {
+      "id": "waterSurface",
+      "type": "fill",
+      "source": "pmtiles",
+      "source-layer": "waterSurface",
+      "paint": {
+        "fill-color": "#4a90e2",
+        "fill-opacity": 0.8,
+        "fill-outline-color": "#2e5984"
+      },
+      "metadata": {
+        "z-order": 1
+      }
+    },
+    {
+      "id": "vegetation",
+      "type": "fill",
+      "source": "pmtiles",
+      "source-layer": "vegetation",
+      "paint": {
+        "fill-color": "#7cb342",
+        "fill-opacity": 0.7
+      },
+      "metadata": {
+        "z-order": 2
+      }
+    },
+    {
+      "id": "artificialCoverage",
+      "type": "fill",
+      "source": "pmtiles",
+      "source-layer": "artificialCoverage",
+      "paint": {
+        "fill-color": "#e0e0e0",
+        "fill-opacity": 0.6
+      },
+      "metadata": {
+        "z-order": 3
+      }
+    },
+    {
+      "id": "roadArea",
+      "type": "fill",
+      "source": "pmtiles",
+      "source-layer": "roadArea",
+      "paint": {
+        "fill-color": "#ffffff",
+        "fill-opacity": 0.9,
+        "fill-outline-color": "#cccccc"
+      },
+      "metadata": {
+        "z-order": 11
+      }
+    },
+    {
+      "id": "building",
+      "type": "fill",
+      "source": "pmtiles",
+      "source-layer": "building",
+      "paint": {
+        "fill-color": "#d4d4d4",
+        "fill-opacity": 0.8,
+        "fill-outline-color": "#999999"
+      },
+      "metadata": {
+        "z-order": 12
+      }
+    },
+    {
+      "id": "contourLine",
+      "type": "line",
+      "source": "pmtiles",
+      "source-layer": "contourLine",
+      "paint": {
+        "line-color": "#8B4513",
+        "line-width": {
+          "stops": [
+            [
+              10,
+              0.5
+            ],
+            [
+              14,
+              1
+            ]
+          ]
+        },
+        "line-opacity": 0.6
+      },
+      "metadata": {
+        "z-order": 21
+      }
+    },
+    {
+      "id": "linearWaterFeature",
+      "type": "line",
+      "source": "pmtiles",
+      "source-layer": "linearWaterFeature",
+      "paint": {
+        "line-color": "#4a90e2",
+        "line-width": {
+          "stops": [
+            [
+              10,
+              1
+            ],
+            [
+              14,
+              3
+            ]
+          ]
+        }
+      },
+      "metadata": {
+        "z-order": 22
+      }
+    },
+    {
+      "id": "linearTopographicFeature",
+      "type": "line",
+      "source": "pmtiles",
+      "source-layer": "linearTopographicFeature",
+      "paint": {
+        "line-color": "#8B4513",
+        "line-width": {
+          "stops": [
+            [
+              10,
+              0.5
+            ],
+            [
+              14,
+              1.5
+            ]
+          ]
+        },
+        "line-opacity": 0.7
+      },
+      "metadata": {
+        "z-order": 23
+      }
+    },
+    {
+      "id": "administrativeBoundaryArea",
+      "type": "line",
+      "source": "pmtiles",
+      "source-layer": "administrativeBoundaryArea",
+      "paint": {
+        "line-color": "#ff6b6b",
+        "line-width": {
+          "stops": [
+            [
+              10,
+              1
+            ],
+            [
+              14,
+              3
+            ]
+          ]
+        },
+        "line-dasharray": [
+          3,
+          3
+        ],
+        "line-opacity": 0.8
+      },
+      "metadata": {
+        "z-order": 24
+      }
+    },
+    {
+      "id": "geographicalNames",
+      "type": "line",
+      "source": "pmtiles",
+      "source-layer": "geographicalNames",
+      "paint": {
+        "line-color": "#4169E1",
+        "line-width": 1,
+        "line-opacity": 0.6
+      },
+      "metadata": {
+        "z-order": 25
+      }
+    },
+    {
+      "id": "supplementaryRoadLine",
+      "type": "line",
+      "source": "pmtiles",
+      "source-layer": "supplementaryRoadLine",
+      "paint": {
+        "line-color": "#f0f0f0",
+        "line-width": {
+          "stops": [
+            [
+              10,
+              0.5
+            ],
+            [
+              14,
+              2
+            ]
+          ]
+        },
+        "line-dasharray": [
+          2,
+          2
+        ]
+      },
+      "metadata": {
+        "z-order": 26
+      }
+    },
+    {
+      "id": "roadCenterLine-casing",
+      "type": "line",
+      "source": "pmtiles",
+      "source-layer": "roadCenterLine",
+      "paint": {
+        "line-color": "#cccccc",
+        "line-width": {
+          "stops": [
+            [
+              10,
+              2
+            ],
+            [
+              14,
+              6
+            ]
+          ]
+        },
+        "line-gap-width": {
+          "stops": [
+            [
+              10,
+              1
+            ],
+            [
+              14,
+              4
+            ]
+          ]
+        }
+      },
+      "metadata": {
+        "z-order": 27
+      }
+    },
+    {
+      "id": "roadCenterLine",
+      "type": "line",
+      "source": "pmtiles",
+      "source-layer": "roadCenterLine",
+      "paint": {
+        "line-color": "#ffffff",
+        "line-width": {
+          "stops": [
+            [
+              10,
+              1
+            ],
+            [
+              14,
+              4
+            ]
+          ]
+        },
+        "line-opacity": 0.9
+      },
+      "metadata": {
+        "z-order": 27
+      }
+    },
+    {
+      "id": "structures_ln",
+      "type": "line",
+      "source": "pmtiles",
+      "source-layer": "structures_ln",
+      "paint": {
+        "line-color": "#666666",
+        "line-width": {
+          "stops": [
+            [
+              10,
+              1
+            ],
+            [
+              14,
+              2
+            ]
+          ]
+        }
+      },
+      "metadata": {
+        "z-order": 28
+      }
+    },
+    {
+      "id": "geodeticReference",
+      "type": "circle",
+      "source": "pmtiles",
+      "source-layer": "geodeticReference",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-radius": {
+          "base": 1,
+          "stops": [
+            [
+              12,
+              2
+            ],
+            [
+              16,
+              3
+            ],
+            [
+              20,
+              4
+            ]
+          ]
+        },
+        "circle-color": "#e74c3c",
+        "circle-stroke-width": 1.5,
+        "circle-stroke-color": "#000000",
+        "circle-opacity": 0.9
+      }
+    },
+    {
+      "id": "pointTopographicFeature",
+      "type": "circle",
+      "source": "pmtiles",
+      "source-layer": "pointTopographicFeature",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-radius": {
+          "base": 1.1,
+          "stops": [
+            [
+              10,
+              2
+            ],
+            [
+              14,
+              3
+            ],
+            [
+              18,
+              5
+            ]
+          ]
+        },
+        "circle-color": "#8B4513",
+        "circle-stroke-width": 1,
+        "circle-stroke-color": "#757575",
+        "circle-opacity": 0.9
+      }
+    },
+    {
+      "id": "roadAreaattribute",
+      "type": "circle",
+      "source": "pmtiles",
+      "source-layer": "roadAreaattribute",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-radius": {
+          "base": 1,
+          "stops": [
+            [
+              13,
+              1.5
+            ],
+            [
+              17,
+              2.5
+            ],
+            [
+              20,
+              3.5
+            ]
+          ]
+        },
+        "circle-color": "#ffffff",
+        "circle-stroke-width": 0.5,
+        "circle-stroke-color": "#616161",
+        "circle-opacity": 0.8
+      }
+    },
+    {
+      "id": "linearfacility",
+      "type": "circle",
+      "source": "pmtiles",
+      "source-layer": "linearfacility",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-radius": {
+          "base": 1,
+          "stops": [
+            [
+              14,
+              2
+            ],
+            [
+              18,
+              3
+            ],
+            [
+              22,
+              4
+            ]
+          ]
+        },
+        "circle-color": "#ff9500",
+        "circle-stroke-width": 1,
+        "circle-stroke-color": "#666666",
+        "circle-opacity": 0.7
+      }
+    },
+    {
+      "id": "structures_pt",
+      "type": "circle",
+      "source": "pmtiles",
+      "source-layer": "structures_pt",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-radius": {
+          "base": 1.1,
+          "stops": [
+            [
+              12,
+              2
+            ],
+            [
+              16,
+              4
+            ],
+            [
+              20,
+              6
+            ]
+          ]
+        },
+        "circle-color": "#666666",
+        "circle-stroke-width": 0.5,
+        "circle-stroke-color": "#ffffff",
+        "circle-opacity": 0.8
+      }
+    },
+    {
+      "id": "facility",
+      "type": "circle",
+      "source": "pmtiles",
+      "source-layer": "facility",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-radius": {
+          "base": 1.2,
+          "stops": [
+            [
+              10,
+              3
+            ],
+            [
+              14,
+              6
+            ],
+            [
+              18,
+              10
+            ]
+          ]
+        },
+        "circle-color": "#ff9500",
+        "circle-stroke-width": 1,
+        "circle-stroke-color": "#ffffff",
+        "circle-opacity": 0.9
+      }
+    }
+  ],
+  "center": [
+    139.7,
+    35.7
+  ],
+  "zoom": 10,
+  "bearing": 0,
+  "pitch": 0
+}

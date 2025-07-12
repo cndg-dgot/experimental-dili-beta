@@ -1,0 +1,45 @@
+/// Infrastructure layers (buildings, roads)
+module style.layers.InfrastructureLayers
+
+import "../config/Colors.pkl" as colors
+
+/// Road areas (polygon representation of roads)
+roadArea: Mapping = new {
+  ["id"] = "roadArea"
+  ["type"] = "fill"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "roadArea"
+  ["paint"] = new {
+    ["fill-color"] = colors.transportation["roadArea"]
+    ["fill-opacity"] = 0.9
+    ["fill-outline-color"] = colors.transportation["roadAreaOutline"]
+  }
+  ["metadata"] = new {
+    ["z-order"] = 11
+  }
+}
+
+/// Building footprints
+building: Mapping = new {
+  ["id"] = "building"
+  ["type"] = "fill"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "building"
+  ["paint"] = new {
+    ["fill-color"] = colors.infrastructure["building"]
+    ["fill-opacity"] = 0.8
+    ["fill-outline-color"] = colors.infrastructure["buildingOutline"]
+  }
+  ["metadata"] = new {
+    ["z-order"] = 12
+  }
+}
+
+/// All infrastructure layers in render order
+infrastructureLayers: List = List(
+  roadArea,
+  building
+)
+
+/// Legacy alias
+all: List = infrastructureLayers

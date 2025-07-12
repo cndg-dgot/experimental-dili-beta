@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>PMTiles Viewer - S_0604-374 Dataset</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.0.0/dist/maplibre-gl.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            max-width: 300px;
+        }
+        
+        .map-overlay h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .map-overlay p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .layer-toggle {
+            margin: 5px 0;
+        }
+        
+        .layer-toggle input {
+            margin-right: 8px;
+        }
+        
+        .layer-toggle label {
+            font-size: 13px;
+            cursor: pointer;
+        }
+        
+        .docs-link {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: #007cbf;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 1000;
+        }
+        
+        .docs-link:hover {
+            background: #005a8b;
+        }
+    </style>
+    <script src="https://unpkg.com/maplibre-gl@5.0.0/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/pmtiles@3.0.6/dist/pmtiles.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // PMTiles protocol setup
+            let protocol = new pmtiles.Protocol();
+            maplibregl.addProtocol("pmtiles", protocol.tile);
+
+            // Initialize map
+            const map = new maplibregl.Map({
+                container: 'map',
+                style: 'style.json',
+                center: [125.537868, -8.559112], // Data center coordinates
+                zoom: 15.76,
+                hash: true
+            });
+
+            map.on('load', () => {
+                // Add PMTiles source
+                map.addSource('pmtiles-source', {
+                    type: 'vector',
+                    url: 'pmtiles://a.pmtiles'
+                });
+
+                // Layer visibility controls
+                const layerControls = {
+                    'toggle-buildings': ['building'],
+                    'toggle-roads': ['roadCenterLine', 'roadArea', 'supplementaryRoadLine'],
+                    'toggle-water': ['waterSurface', 'linearWaterFeature'],
+                    'toggle-contours': ['contourLine']
+                };
+
+                Object.keys(layerControls).forEach(controlId => {
+                    const checkbox = document.getElementById(controlId);
+                    checkbox.addEventListener('change', () => {
+                        layerControls[controlId].forEach(layerId => {
+                            const visibility = checkbox.checked ? 'visible' : 'none';
+                            if (map.getLayer(layerId)) {
+                                map.setLayoutProperty(layerId, 'visibility', visibility);
+                            }
+                        });
+                    });
+                });
+
+                console.log('Map loaded successfully with PMTiles source');
+            });
+
+            // Add navigation controls
+            map.addControl(new maplibregl.NavigationControl());
+            map.addControl(new maplibregl.ScaleControl({
+                position: 'bottom-right'
+            }));
+
+            // Add geolocation control
+            map.addControl(new maplibregl.GeolocateControl({
+                positionOptions: {
+                    enableHighAccuracy: true
+                },
+                trackUserLocation: true
+            }));
+        });
+    </script>
+</head>
+<body>
+    <div id="map"></div>
+    
+    <div class="map-overlay">
+        <h3>🇹🇱 S_0604-374 Dataset</h3>
+        <p><strong>Data Format:</strong> PMTiles</p>
+        <p><strong>Number of Layers:</strong> 19</p>
+        <p><strong>Source:</strong> Esri File Geodatabase</p>
+        
+        <div style="margin-top: 15px;">
+            <h4 style="margin: 0 0 8px 0; font-size: 14px;">Layer Display</h4>
+            <div class="layer-toggle">
+                <input type="checkbox" id="toggle-buildings" checked>
+                <label for="toggle-buildings">Buildings</label>
+            </div>
+            <div class="layer-toggle">
+                <input type="checkbox" id="toggle-roads" checked>
+                <label for="toggle-roads">Roads</label>
+            </div>
+            <div class="layer-toggle">
+                <input type="checkbox" id="toggle-water" checked>
+                <label for="toggle-water">Water</label>
+            </div>
+            <div class="layer-toggle">
+                <input type="checkbox" id="toggle-contours" checked>
+                <label for="toggle-contours">Contours</label>
+            </div>
+        </div>
+    </div>
+    
+    <a href="docs/" class="docs-link">📖 Documentation</a>
+</body>
+</html>

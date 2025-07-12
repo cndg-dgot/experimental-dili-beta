@@ -1,0 +1,57 @@
+/// Layer ordering configuration matching our z-index strategy
+module style.config.LayerOrder
+
+/// Z-index values for proper layering (bottom to top)
+
+// Base layers (1-10)
+waterSurface: Int = 1
+vegetation: Int = 2
+artificialCoverage: Int = 3
+
+// Infrastructure polygons (11-20)
+roadArea: Int = 11
+building: Int = 12
+
+// Linear features (21-40)
+contourLine: Int = 21
+linearWaterFeature: Int = 22
+linearTopographicFeature: Int = 23
+administrativeBoundaryArea: Int = 24
+geographicalNames: Int = 25
+supplementaryRoadLine: Int = 26
+roadCenterLine: Int = 27
+structures_ln: Int = 28
+
+// Point features (41-60)
+geodeticReference: Int = 41
+pointTopographicFeature: Int = 42
+roadAreaattribute: Int = 43
+linearfacility: Int = 44
+structures_pt: Int = 45
+facility: Int = 46
+
+/// Render order array (used to ensure correct layer ordering in style)
+renderOrder: List<String> = new {
+  "background"
+  "water"
+  "waterSurface"
+  "vegetation"
+  "artificialCoverage"
+  "roadArea"
+  "building"
+  "contourLine"
+  "linearWaterFeature"
+  "linearTopographicFeature"
+  "administrativeBoundaryArea"
+  "geographicalNames"
+  "supplementaryRoadLine"
+  "roadCenterLine"
+  "roadCenterLine-casing"
+  "structures_ln"
+  "geodeticReference"
+  "pointTopographicFeature"
+  "roadAreaattribute"
+  "linearfacility"
+  "structures_pt"
+  "facility"
+}

@@ -1,0 +1,20 @@
+/// Configuration for data sources
+module style.config.Sources
+
+/// MapTiler base tiles (optional background)
+openmaptiles: Mapping<String, Any> = new {
+  ["type"] = "vector"
+  ["url"] = "https://api.maptiler.com/tiles/v3/tiles.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL"
+}
+
+/// PMTiles source containing our converted data
+pmtilesSource: Mapping<String, Any> = new {
+  ["type"] = "vector"
+  ["url"] = "pmtiles://a.pmtiles"
+}
+
+/// All sources combined
+all: Mapping<String, Mapping<String, Any>> = new {
+  ["openmaptiles"] = openmaptiles
+  ["pmtiles"] = pmtilesSource
+}

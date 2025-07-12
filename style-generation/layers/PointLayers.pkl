@@ -1,0 +1,167 @@
+/// Point feature layer definitions
+/// Defines styling for POI and facility point layers
+
+module layers.PointLayers
+
+import "../config/Colors.pkl"
+import "../config/Sources.pkl"
+
+/// POI and facility points with appropriate icons and labels
+facilityLayer: Mapping = new {
+  ["id"] = "facility"
+  ["type"] = "circle"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "facility"
+  ["layout"] = new {
+    ["visibility"] = "visible"
+  }
+  ["paint"] = new {
+    ["circle-radius"] = new {
+      ["base"] = 1.2
+      ["stops"] = List(
+        List(10, 3),
+        List(14, 6), 
+        List(18, 10)
+      )
+    }
+    ["circle-color"] = Colors.facilityColor
+    ["circle-stroke-width"] = 1
+    ["circle-stroke-color"] = Colors.white
+    ["circle-opacity"] = 0.9
+  }
+}
+
+/// Built structures and infrastructure points
+structuresPointLayer: Mapping = new {
+  ["id"] = "structures_pt"
+  ["type"] = "circle"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "structures_pt"
+  ["layout"] = new {
+    ["visibility"] = "visible"
+  }
+  ["paint"] = new {
+    ["circle-radius"] = new {
+      ["base"] = 1.1
+      ["stops"] = List(
+        List(12, 2),
+        List(16, 4),
+        List(20, 6)
+      )
+    }
+    ["circle-color"] = Colors.infrastructureColor
+    ["circle-stroke-width"] = 0.5
+    ["circle-stroke-color"] = Colors.white
+    ["circle-opacity"] = 0.8
+  }
+}
+
+/// Linear facility connection points
+linearFacilityLayer: Mapping = new {
+  ["id"] = "linearfacility"
+  ["type"] = "circle"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "linearfacility"
+  ["layout"] = new {
+    ["visibility"] = "visible"
+  }
+  ["paint"] = new {
+    ["circle-radius"] = new {
+      ["base"] = 1
+      ["stops"] = List(
+        List(14, 2),
+        List(18, 3),
+        List(22, 4)
+      )
+    }
+    ["circle-color"] = Colors.facilityColor
+    ["circle-stroke-width"] = 1
+    ["circle-stroke-color"] = Colors.infrastructureColor
+    ["circle-opacity"] = 0.7
+  }
+}
+
+/// Road area attribute points
+roadAreaAttributeLayer: Mapping = new {
+  ["id"] = "roadAreaattribute"
+  ["type"] = "circle"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "roadAreaattribute"
+  ["layout"] = new {
+    ["visibility"] = "visible"
+  }
+  ["paint"] = new {
+    ["circle-radius"] = new {
+      ["base"] = 1
+      ["stops"] = List(
+        List(13, 1.5),
+        List(17, 2.5),
+        List(20, 3.5)
+      )
+    }
+    ["circle-color"] = Colors.roadColor
+    ["circle-stroke-width"] = 0.5
+    ["circle-stroke-color"] = Colors.gray700
+    ["circle-opacity"] = 0.8
+  }
+}
+
+/// Natural topographic feature points (peaks, valleys, etc.)
+pointTopographicFeatureLayer: Mapping = new {
+  ["id"] = "pointTopographicFeature"
+  ["type"] = "circle"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "pointTopographicFeature"
+  ["layout"] = new {
+    ["visibility"] = "visible"
+  }
+  ["paint"] = new {
+    ["circle-radius"] = new {
+      ["base"] = 1.1
+      ["stops"] = List(
+        List(10, 2),
+        List(14, 3),
+        List(18, 5)
+      )
+    }
+    ["circle-color"] = Colors.naturalColor
+    ["circle-stroke-width"] = 1
+    ["circle-stroke-color"] = Colors.gray600
+    ["circle-opacity"] = 0.9
+  }
+}
+
+/// Geodetic reference points (survey markers, triangulation points)
+geodeticReferenceLayer: Mapping = new {
+  ["id"] = "geodeticReference"
+  ["type"] = "circle"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "geodeticReference"
+  ["layout"] = new {
+    ["visibility"] = "visible"
+  }
+  ["paint"] = new {
+    ["circle-radius"] = new {
+      ["base"] = 1
+      ["stops"] = List(
+        List(12, 2),
+        List(16, 3),
+        List(20, 4)
+      )
+    }
+    ["circle-color"] = Colors.referenceColor
+    ["circle-stroke-width"] = 1.5
+    ["circle-stroke-color"] = Colors.black
+    ["circle-opacity"] = 0.9
+  }
+}
+
+/// All point layers in z-order (bottom to top)
+pointLayers: List = List(
+  geodeticReferenceLayer,
+  pointTopographicFeatureLayer,
+  roadAreaAttributeLayer,
+  linearFacilityLayer,
+  structuresPointLayer,
+  facilityLayer
+)

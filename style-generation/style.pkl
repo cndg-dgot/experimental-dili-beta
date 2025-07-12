@@ -1,0 +1,71 @@
+/// Main MapLibre GL Style Configuration
+/// Assembles all layers and sources into a complete style.json
+
+module style
+
+import "config/Colors.pkl"
+import "config/Sources.pkl"
+import "config/LayerOrder.pkl"
+import "layers/BaseLayers.pkl"
+import "layers/InfrastructureLayers.pkl"
+import "layers/LinearLayers.pkl"
+import "layers/PointLayers.pkl"
+
+/// MapLibre GL Style specification
+style: Mapping = new {
+  ["version"] = 8
+  ["name"] = "S_0604-374 Digital Land Information"
+  ["metadata"] = new {
+    ["source"] = "S_0604-374.gdb File Geodatabase"
+    ["description"] = "Digital land information visualization for Geological Survey Institute dataset"
+    ["license"] = "CC0 1.0 Universal"
+    ["generated"] = "Automated via Apple Pkl"
+  }
+  
+  // Data sources
+  ["sources"] = new {
+    ["pmtiles"] = Sources.pmtilesSource
+  }
+  
+  // Base map style
+  ["sprite"] = "https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite"
+  ["glyphs"] = "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf"
+  
+  // Layer definitions in proper z-order
+  ["layers"] = new Listing {
+    // Background
+    new {
+      ["id"] = "background"
+      ["type"] = "background" 
+      ["paint"] = new {
+        ["background-color"] = Colors.backgroundColor
+      }
+    }
+    
+    // Base layers (polygons)
+    ...BaseLayers.baseLayers
+    
+    // Infrastructure layers (polygons + lines)  
+    ...InfrastructureLayers.infrastructureLayers
+    
+    // Linear layers (lines)
+    ...LinearLayers.linearLayers
+    
+    // Point layers (points)
+    ...PointLayers.pointLayers
+  }.toList()
+  
+  // Default view configuration
+  ["center"] = List(139.7, 35.7)  // Tokyo area default
+  ["zoom"] = 10
+  ["bearing"] = 0
+  ["pitch"] = 0
+}
+
+/// Export the style as standard JSON
+output {
+  renderer = new JsonRenderer {
+    indent = "  "
+  }
+  value = style
+}

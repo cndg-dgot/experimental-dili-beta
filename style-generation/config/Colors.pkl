@@ -1,0 +1,78 @@
+/// Configuration for color palette used in the map style
+module style.config.Colors
+
+/// Water-related colors
+water: Mapping<String, String> = new {
+  ["primary"] = "#4a90e2"
+  ["outline"] = "#2e5984"
+  ["background"] = "#a0c8f0"
+}
+
+/// Nature and vegetation colors
+nature: Mapping<String, String> = new {
+  ["vegetation"] = "#7cb342"
+  ["topographic"] = "#8B4513"
+}
+
+/// Infrastructure colors
+infrastructure: Mapping<String, String> = new {
+  ["building"] = "#d4d4d4"
+  ["buildingOutline"] = "#999999"
+  ["artificial"] = "#e0e0e0"
+  ["structures"] = "#666666"
+}
+
+/// Transportation colors
+transportation: Mapping<String, String> = new {
+  ["road"] = "#ffffff"
+  ["roadCasing"] = "#cccccc"
+  ["roadArea"] = "#ffffff"
+  ["roadAreaOutline"] = "#cccccc"
+  ["supplementary"] = "#f0f0f0"
+}
+
+/// Reference and administrative colors
+reference: Mapping<String, String> = new {
+  ["administrative"] = "#ff6b6b"
+  ["geodetic"] = "#e74c3c"
+  ["geographical"] = "#4169E1"
+  ["contour"] = "#8B4513"
+}
+
+/// Point of interest colors
+poi: Mapping<String, String> = new {
+  ["facility"] = "#ff9500"
+  ["linearFacility"] = "#ff6b35"
+  ["structures"] = "#95a5a6"
+  ["transportation"] = "#34495e"
+}
+
+/// Background colors
+background: Mapping<String, String> = new {
+  ["main"] = "#f8f8f8"
+}
+
+// Direct color access for layer definitions
+backgroundColor: String = background["main"]
+waterColor: String = water["primary"]
+vegetationColor: String = nature["vegetation"]
+artificialColor: String = infrastructure["artificial"]
+buildingColor: String = infrastructure["building"]
+buildingOutlineColor: String = infrastructure["buildingOutline"]
+roadColor: String = transportation["road"]
+roadCasingColor: String = transportation["roadCasing"]
+roadAreaColor: String = transportation["roadArea"]
+contourColor: String = reference["contour"]
+waterLineColor: String = water["primary"]
+naturalColor: String = nature["topographic"]
+administrativeColor: String = reference["administrative"]
+geographicalColor: String = reference["geographical"]
+infrastructureColor: String = infrastructure["structures"]
+facilityColor: String = poi["facility"]
+referenceColor: String = reference["geodetic"]
+
+// Standard colors
+white: String = "#ffffff"
+black: String = "#000000"
+gray600: String = "#757575"
+gray700: String = "#616161"

@@ -1,0 +1,158 @@
+{
+  "layerOrder": {
+    "metadata": {
+      "description": "Z-order configuration for S_0604-374 dataset layers",
+      "principle": "Ordered from bottom to top: polygons → lines → points",
+      "lastUpdated": "2025-07-09"
+    },
+    "polygons": [
+      {
+        "name": "waterSurface",
+        "zIndex": 1,
+        "description": "Water bodies - base landscape layer",
+        "priority": "background"
+      },
+      {
+        "name": "vegetation", 
+        "zIndex": 2,
+        "description": "Natural land cover",
+        "priority": "background"
+      },
+      {
+        "name": "artificialCoverage",
+        "zIndex": 3, 
+        "description": "Human-made surface coverage",
+        "priority": "background"
+      },
+      {
+        "name": "roadArea",
+        "zIndex": 11,
+        "description": "Road surfaces and infrastructure",
+        "priority": "infrastructure"
+      },
+      {
+        "name": "building",
+        "zIndex": 12,
+        "description": "Building footprints",
+        "priority": "infrastructure"
+      }
+    ],
+    "lines": [
+      {
+        "name": "contourLine",
+        "zIndex": 21,
+        "description": "Topographic contour lines",
+        "priority": "reference"
+      },
+      {
+        "name": "linearWaterFeature",
+        "zIndex": 22,
+        "description": "Rivers and water channels",
+        "priority": "natural"
+      },
+      {
+        "name": "linearTopographicFeature", 
+        "zIndex": 23,
+        "description": "Natural terrain features",
+        "priority": "natural"
+      },
+      {
+        "name": "administrativeBoundaryArea",
+        "zIndex": 24,
+        "description": "Administrative boundaries",
+        "priority": "reference"
+      },
+      {
+        "name": "geographicalNames",
+        "zIndex": 25,
+        "description": "Place name indicators",
+        "priority": "reference"
+      },
+      {
+        "name": "supplementaryRoadLine",
+        "zIndex": 26,
+        "description": "Secondary road network",
+        "priority": "transportation"
+      },
+      {
+        "name": "roadCenterLine",
+        "zIndex": 27,
+        "description": "Primary road network",
+        "priority": "transportation"
+      },
+      {
+        "name": "structures_ln", 
+        "zIndex": 28,
+        "description": "Linear infrastructure elements",
+        "priority": "infrastructure"
+      }
+    ],
+    "points": [
+      {
+        "name": "geodeticReference",
+        "zIndex": 41,
+        "description": "Survey and geodetic points",
+        "priority": "reference"
+      },
+      {
+        "name": "pointTopographicFeature",
+        "zIndex": 42,
+        "description": "Natural landmark points",
+        "priority": "natural"
+      },
+      {
+        "name": "roadAreaattribute",
+        "zIndex": 43,
+        "description": "Road-related attribute points",
+        "priority": "transportation"
+      },
+      {
+        "name": "linearfacility",
+        "zIndex": 44,
+        "description": "Linear infrastructure points",
+        "priority": "infrastructure"
+      },
+      {
+        "name": "structures_pt",
+        "zIndex": 45,
+        "description": "Built structure points",
+        "priority": "infrastructure"
+      },
+      {
+        "name": "facility",
+        "zIndex": 46,
+        "description": "Public and commercial facilities",
+        "priority": "poi"
+      }
+    ]
+  },
+  "layerGroups": {
+    "base": ["waterSurface", "vegetation", "artificialCoverage"],
+    "infrastructure": ["roadArea", "building", "structures_ln", "linearfacility", "structures_pt"],
+    "transportation": ["supplementaryRoadLine", "roadCenterLine", "roadAreaattribute"],
+    "natural": ["linearWaterFeature", "linearTopographicFeature", "pointTopographicFeature"],
+    "reference": ["contourLine", "administrativeBoundaryArea", "geographicalNames", "geodeticReference"],
+    "poi": ["facility"]
+  },
+  "renderOrder": [
+    "waterSurface",
+    "vegetation", 
+    "artificialCoverage",
+    "roadArea",
+    "building",
+    "contourLine",
+    "linearWaterFeature",
+    "linearTopographicFeature",
+    "administrativeBoundaryArea", 
+    "geographicalNames",
+    "supplementaryRoadLine",
+    "roadCenterLine",
+    "structures_ln",
+    "geodeticReference",
+    "pointTopographicFeature",
+    "roadAreaattribute",
+    "linearfacility",
+    "structures_pt",
+    "facility"
+  ]
+}

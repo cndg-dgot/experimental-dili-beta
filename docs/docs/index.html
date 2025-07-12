@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Documentation - S_0604-374 Dataset</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        h1 {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            border-bottom: 1px solid #ecf0f1;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+        }
+        
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 4px solid #3498db;
+        }
+        
+        .layer-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .layer-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #3498db;
+        }
+        
+        .layer-item.corrected {
+            border-left-color: #e74c3c;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .back-link:hover {
+            background: #2980b9;
+        }
+        
+        .info-box {
+            background: #e8f4fd;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .warning-box {
+            background: #fdf2e8;
+            border: 1px solid #e67e22;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="../" class="back-link">← Back to Map</a>
+    
+    <h1>📖 S_0604-374 Dataset Documentation</h1>
+    
+    <div class="info-box">
+        <strong>Dataset Overview:</strong> Vector tile dataset converted from Esri File Geodatabase to PMTiles format
+    </div>
+    
+    <h2>🗂️ File Structure</h2>
+    <ul>
+        <li><code>a.pmtiles</code> - PMTiles file with all layers merged</li>
+        <li><code>index.html</code> - Interactive map viewer</li>
+        <li><code>style.json</code> - Style definition for MapLibre GL</li>
+        <li><code>docs/</code> - Documentation folder</li>
+    </ul>
+    
+    <h2>📊 Data Details</h2>
+    <ul>
+        <li><strong>Source:</strong> <code>src/S_0604-374.gdb</code></li>
+        <li><strong>Number of Layers:</strong> 19 layers</li>
+        <li><strong>Data Format:</strong> Esri File Geodatabase → PMTiles</li>
+        <li><strong>Coordinate System:</strong> Preserved from source data</li>
+        <li><strong>Zoom Levels:</strong> 0-14</li>
+    </ul>
+    
+    <h2>🗺️ Included Layers</h2>
+    
+    <div class="layer-list">
+        <div class="layer-item corrected">
+            <strong>administrativeBoundaryArea</strong><br>
+            <small>Administrative Boundary Area (Corrected)</small>
+        </div>
+        <div class="layer-item">
+            <strong>artificialCoverage</strong><br>
+            <small>Artificial Coverage</small>
+        </div>
+        <div class="layer-item">
+            <strong>building</strong><br>
+            <small>Buildings</small>
+        </div>
+        <div class="layer-item">
+            <strong>contourLine</strong><br>
+            <small>Contour Lines</small>
+        </div>
+        <div class="layer-item">
+            <strong>facility</strong><br>
+            <small>Facilities (Points)</small>
+        </div>
+        <div class="layer-item">
+            <strong>geodeticReference</strong><br>
+            <small>Geodetic Reference Points</small>
+        </div>
+        <div class="layer-item">
+            <strong>geographicalNames</strong><br>
+            <small>Geographical Names</small>
+        </div>
+        <div class="layer-item">
+            <strong>linearfacility</strong><br>
+            <small>Linear Facilities</small>
+        </div>
+        <div class="layer-item">
+            <strong>linearTopographicFeature</strong><br>
+            <small>Linear Topographic Features</small>
+        </div>
+        <div class="layer-item">
+            <strong>linearWaterFeature</strong><br>
+            <small>Linear Water Features</small>
+        </div>
+        <div class="layer-item">
+            <strong>pointTopographicFeature</strong><br>
+            <small>Point Topographic Features</small>
+        </div>
+        <div class="layer-item">
+            <strong>roadArea</strong><br>
+            <small>Road Areas</small>
+        </div>
+        <div class="layer-item">
+            <strong>roadAreaattribute</strong><br>
+            <small>Road Area Attributes</small>
+        </div>
+        <div class="layer-item">
+            <strong>roadCenterLine</strong><br>
+            <small>Road Center Lines</small>
+        </div>
+        <div class="layer-item">
+            <strong>structures_ln</strong><br>
+            <small>Structures (Lines)</small>
+        </div>
+        <div class="layer-item">
+            <strong>structures_pt</strong><br>
+            <small>Structures (Points)</small>
+        </div>
+        <div class="layer-item">
+            <strong>supplementaryRoadLine</strong><br>
+            <small>Supplementary Road Lines</small>
+        </div>
+        <div class="layer-item corrected">
+            <strong>vegetation</strong><br>
+            <small>Vegetation (Corrected)</small>
+        </div>
+        <div class="layer-item">
+            <strong>waterSurface</strong><br>
+            <small>Water Surface</small>
+        </div>
+    </div>
+    
+    <div class="warning-box">
+        <strong>Note:</strong> Some layer names in the source data had spelling errors. The following corrections were made during conversion:
+        <ul>
+            <li><code>administrtiveBoudaryArea</code> → <code>administrativeBoundaryArea</code></li>
+            <li><code>vegitation</code> → <code>vegetation</code></li>
+        </ul>
+    </div>
+    
+    <h2>🛠️ Technical Specifications</h2>
+    
+    <h3>Conversion Pipeline</h3>
+    <pre><code>ogr2ogr -f GeoJSONSeq → jq (tippecanoe properties) → tippecanoe → PMTiles</code></pre>
+    
+    <h3>Tools Used</h3>
+    <ul>
+        <li><strong>ogr2ogr:</strong> GDAL's vector data conversion tool</li>
+        <li><strong>jq:</strong> JSON processing tool (for adding tippecanoe properties)</li>
+        <li><strong>tippecanoe:</strong> Vector tile generation tool</li>
+        <li><strong>MapLibre GL:</strong> Web mapping rendering library</li>
+    </ul>
+    
+    <h3>tippecanoe Options</h3>
+    <ul>
+        <li><code>--maximum-zoom=14</code></li>
+        <li><code>--minimum-zoom=0</code></li>
+        <li><code>--drop-densest-as-needed</code></li>
+        <li><code>--extend-zooms-if-still-dropping</code></li>
+        <li><code>--force</code></li>
+    </ul>
+    
+    <h2>🌐 GitHub Pages</h2>
+    <p>This dataset is hosted on GitHub Pages and is directly accessible on the web. The PMTiles file supports efficient streaming access, downloading only the necessary parts.</p>
+    
+    <h2>📱 How to Use</h2>
+    <ol>
+        <li>View the interactive map on the main page</li>
+        <li>Toggle layers on/off</li>
+        <li>Zoom in/out to explore data details</li>
+        <li>Use location services to display your current location</li>
+    </ol>
+    
+    <div class="info-box">
+        <strong>Performance:</strong> The PMTiles format allows for fast display of large vector datasets.
+    </div>
+    
+    <p><a href="../" class="back-link">← Back to Map</a></p>
+</body>
+</html>

@@ -1,0 +1,208 @@
+/// Linear features (lines and boundaries)
+module style.layers.LinearLayers
+
+import "../config/Colors.pkl" as colors
+
+/// Contour lines (topographic)
+contourLine: Mapping = new {
+  ["id"] = "contourLine"
+  ["type"] = "line"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "contourLine"
+  ["paint"] = new {
+    ["line-color"] = colors.reference["contour"]
+    ["line-width"] = new {
+      ["stops"] = new {
+        new { 10; 0.5 }
+        new { 14; 1 }
+      }
+    }
+    ["line-opacity"] = 0.6
+  }
+  ["metadata"] = new {
+    ["z-order"] = 21
+  }
+}
+
+/// Linear water features (rivers, streams)
+linearWaterFeature: Mapping = new {
+  ["id"] = "linearWaterFeature"
+  ["type"] = "line"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "linearWaterFeature"
+  ["paint"] = new {
+    ["line-color"] = colors.water["primary"]
+    ["line-width"] = new {
+      ["stops"] = new {
+        new { 10; 1 }
+        new { 14; 3 }
+      }
+    }
+  }
+  ["metadata"] = new {
+    ["z-order"] = 22
+  }
+}
+
+/// Linear topographic features
+linearTopographicFeature: Mapping = new {
+  ["id"] = "linearTopographicFeature"
+  ["type"] = "line"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "linearTopographicFeature"
+  ["paint"] = new {
+    ["line-color"] = colors.nature["topographic"]
+    ["line-width"] = new {
+      ["stops"] = new {
+        new { 10; 0.5 }
+        new { 14; 1.5 }
+      }
+    }
+    ["line-opacity"] = 0.7
+  }
+  ["metadata"] = new {
+    ["z-order"] = 23
+  }
+}
+
+/// Administrative boundaries
+administrativeBoundaryArea: Mapping = new {
+  ["id"] = "administrativeBoundaryArea"
+  ["type"] = "line"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "administrativeBoundaryArea"
+  ["paint"] = new {
+    ["line-color"] = colors.reference["administrative"]
+    ["line-width"] = new {
+      ["stops"] = new {
+        new { 10; 1 }
+        new { 14; 3 }
+      }
+    }
+    ["line-dasharray"] = new { 3; 3 }
+    ["line-opacity"] = 0.8
+  }
+  ["metadata"] = new {
+    ["z-order"] = 24
+  }
+}
+
+/// Geographical names
+geographicalNames: Mapping = new {
+  ["id"] = "geographicalNames"
+  ["type"] = "line"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "geographicalNames"
+  ["paint"] = new {
+    ["line-color"] = colors.reference["geographical"]
+    ["line-width"] = 1
+    ["line-opacity"] = 0.6
+  }
+  ["metadata"] = new {
+    ["z-order"] = 25
+  }
+}
+
+/// Supplementary road lines
+supplementaryRoadLine: Mapping = new {
+  ["id"] = "supplementaryRoadLine"
+  ["type"] = "line"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "supplementaryRoadLine"
+  ["paint"] = new {
+    ["line-color"] = colors.transportation["supplementary"]
+    ["line-width"] = new {
+      ["stops"] = new {
+        new { 10; 0.5 }
+        new { 14; 2 }
+      }
+    }
+    ["line-dasharray"] = new { 2; 2 }
+  }
+  ["metadata"] = new {
+    ["z-order"] = 26
+  }
+}
+
+/// Road center lines with casing
+roadCenterLineCasing: Mapping = new {
+  ["id"] = "roadCenterLine-casing"
+  ["type"] = "line"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "roadCenterLine"
+  ["paint"] = new {
+    ["line-color"] = colors.transportation["roadCasing"]
+    ["line-width"] = new {
+      ["stops"] = new {
+        new { 10; 2 }
+        new { 14; 6 }
+      }
+    }
+    ["line-gap-width"] = new {
+      ["stops"] = new {
+        new { 10; 1 }
+        new { 14; 4 }
+      }
+    }
+  }
+  ["metadata"] = new {
+    ["z-order"] = 27
+  }
+}
+
+/// Road center lines
+roadCenterLine: Mapping = new {
+  ["id"] = "roadCenterLine"
+  ["type"] = "line"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "roadCenterLine"
+  ["paint"] = new {
+    ["line-color"] = colors.transportation["road"]
+    ["line-width"] = new {
+      ["stops"] = new {
+        new { 10; 1 }
+        new { 14; 4 }
+      }
+    }
+    ["line-opacity"] = 0.9
+  }
+  ["metadata"] = new {
+    ["z-order"] = 27
+  }
+}
+
+/// Structure lines
+structures_ln: Mapping = new {
+  ["id"] = "structures_ln"
+  ["type"] = "line"
+  ["source"] = "pmtiles"
+  ["source-layer"] = "structures_ln"
+  ["paint"] = new {
+    ["line-color"] = colors.infrastructure["structures"]
+    ["line-width"] = new {
+      ["stops"] = new {
+        new { 10; 1 }
+        new { 14; 2 }
+      }
+    }
+  }
+  ["metadata"] = new {
+    ["z-order"] = 28
+  }
+}
+
+/// All linear layers in render order
+linearLayers: List = List(
+  contourLine,
+  linearWaterFeature,
+  linearTopographicFeature,
+  administrativeBoundaryArea,
+  geographicalNames,
+  supplementaryRoadLine,
+  roadCenterLineCasing,
+  roadCenterLine,
+  structures_ln
+)
+
+/// Legacy alias
+all: List = linearLayers
