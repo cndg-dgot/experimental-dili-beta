@@ -61,6 +61,11 @@ $(OUTPUT_FILE): $(GDB_PATH) $(LAYERS_FILE) | docs
 			ogr2ogr -f GeoJSONSeq /dev/stdout "$(GDB_PATH)" "$$layer_name" \
 			| jq -c --arg layer "$$fixed_layer_name" '. + {"tippecanoe": {"layer": $$layer, "minzoom": 14, "maxzoom": 14}}' \
 			>> "$(TEMP_DIR)/all_layers.geojsonl"; \
+		elif [ "$$layer_name" = "contourLine" ]; then \
+			echo "Processing layer: $$layer_name -> $$fixed_layer_name (with elevation fix)"; \
+			ogr2ogr -f GeoJSONSeq /dev/stdout "$(GDB_PATH)" "$$layer_name" \
+			| jq -c --arg layer "$$fixed_layer_name" 'if .properties.Layer == "21010" then .properties.Elevation = 10.0 elif .properties.Layer == "21020" then .properties.Elevation = 20.0 elif .properties.Layer == "21030" then .properties.Elevation = 30.0 else . end | . + {"tippecanoe": {"layer": $$layer, "minzoom": 0, "maxzoom": 14}}' \
+			>> "$(TEMP_DIR)/all_layers.geojsonl"; \
 		else \
 			echo "Processing layer: $$layer_name -> $$fixed_layer_name"; \
 			ogr2ogr -f GeoJSONSeq /dev/stdout "$(GDB_PATH)" "$$layer_name" \
