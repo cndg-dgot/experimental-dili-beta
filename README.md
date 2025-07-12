@@ -295,6 +295,20 @@ make clean
 make build 2>&1 | tee conversion.log
 ```
 
+## 🌏 Project Context: FOSS4G 2025 Talk
+
+This repository is part of the project presented at [FOSS4G 2025](https://talks.osgeo.org/foss4g-2025/talk/review/CFU7FEHYF9B3Y7HYTTJK7BQTXLYJPHW9):
+
+**Cloud-native spatial data ecosystem in the rise of the National Geospatial Data Center of Timor-Leste**
+
+The National Center for Geospatial Data (CNDG) of Timor-Leste is building a spatial data ecosystem using cloud-native technologies. This project demonstrates the use of go-pmtiles, Tippecanoe, MapLibre GL JS, Martin, and GitHub Pages to enhance accessibility and usability of geospatial data in Timor-Leste, with support from the geospatial unit of Japan International Cooperation Agency (JICA).
+
+The approach leverages Free and Open Source Software for Geospatial (FOSS4G) to enable efficient data processing, storage, visualization, and sharing. The goal is to provide real-time access to geospatial information for government partners and development organizations, supporting urban planning, environmental management, disaster response, and infrastructure development in Timor-Leste.
+
+For more details, see the [FOSS4G 2025 talk abstract](https://talks.osgeo.org/foss4g-2025/talk/review/CFU7FEHYF9B3Y7HYTTJK7BQTXLYJPHW9).
+
+---
+
 ## 🔍 Inspect PMTiles Data
 
 You can inspect the PMTiles data interactively using the following link:

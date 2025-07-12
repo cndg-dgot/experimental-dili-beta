@@ -57,6 +57,20 @@ This project adopts the following architecture:
 
 This architecture ensures efficient and consistent execution of processes from data conversion to style generation and hosting.
 
+## Project Context: FOSS4G 2025 Talk
+
+This documentation is part of the project presented at [FOSS4G 2025](https://talks.osgeo.org/foss4g-2025/talk/review/CFU7FEHYF9B3Y7HYTTJK7BQTXLYJPHW9):
+
+**Cloud-native spatial data ecosystem in the rise of the National Geospatial Data Center of Timor-Leste**
+
+The National Center for Geospatial Data (CNDG) of Timor-Leste is developing a cloud-native spatial data ecosystem. This project showcases the use of go-pmtiles, Tippecanoe, MapLibre GL JS, Martin, and GitHub Pages to improve geospatial data accessibility and usability in Timor-Leste, with support from JICA's geospatial unit.
+
+The initiative aims to provide scalable, real-time access to geospatial information for government and development partners, supporting sustainable development, urban planning, disaster response, and more.
+
+For details, see the [FOSS4G 2025 talk abstract](https://talks.osgeo.org/foss4g-2025/talk/review/CFU7FEHYF9B3Y7HYTTJK7BQTXLYJPHW9).
+
+---
+
 ## GitHub Pages
 
 This directory is published via GitHub Pages, making the PMTiles file accessible on the web.
