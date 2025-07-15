@@ -252,7 +252,7 @@ tippecanoe \
 - **Zoom Responsive**: Style adjustments based on zoom level
 - **Color Coding**: 
   - Contour lines: Japan GSI standard color (#8B5A2B)
-  - Road centerlines: Semi-transparent yellow with exponential width scaling
+  - Road centerlines: Semi-transparent yellow (#fff9c4) with exponential width scaling
   - Layer-appropriate colors based on cartographic principles
 - **Optimized Layer Ordering**: Contours between base layers and buildings
 - **Performance Optimized**: Building layer only visible at zoom 14

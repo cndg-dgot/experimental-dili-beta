@@ -173,16 +173,11 @@ update-layers:
 # Check layer ordering in style.json
 .PHONY: check-layer-order
 check-layer-order:
-	@echo "Checking layer order in style.json..."
-	@if [ -f docs/layer-config.json ]; then \
-		echo "Expected render order:"; \
-		jq -r '.layerOrder.renderOrder[]' docs/layer-config.json; \
-		echo ""; \
-		echo "Current style.json order:"; \
-		jq -r '.layers[] | select(.source == "pmtiles-source") | .id' docs/style.json 2>/dev/null || echo "style.json not found or invalid"; \
-	else \
-		echo "layer-config.json not found"; \
-	fi
+	echo "Checking layer order in style.json..."
+	echo "Expected render order:"; \
+	jq -r '.renderOrder[]' docs/layer-config.json || echo "layer-config.json not found or invalid"; \
+	echo "Current style.json order:"; \
+	jq -r '.layers[] | .id' docs/style.json || echo "style.json not found or invalid"
 
 # Validate layer configuration
 .PHONY: validate-layers
