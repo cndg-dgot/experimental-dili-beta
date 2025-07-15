@@ -1,0 +1,43 @@
+{
+  "version": 8,
+  "name": "Building Comparison Style",
+  "sources": {
+    "projectBuildings": {
+      "type": "vector",
+      "url": "pmtiles://https://cndg-dgot.github.io/experimental-dili-beta/a.pmtiles"
+    },
+    "osmBuildings": {
+      "type": "vector",
+      "url": "https://tile.openstreetmap.jp/data/planet.json"
+    }
+  },
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "#222222"
+      }
+    },
+    {
+      "id": "osmBuildingsLayer",
+      "type": "fill",
+      "source": "osmBuildings",
+      "source-layer": "building",
+      "paint": {
+        "fill-color": "#ff0000",
+        "fill-opacity": 0.5
+      }
+    },
+    {
+      "id": "projectBuildingsLayer",
+      "type": "fill",
+      "source": "projectBuildings",
+      "source-layer": "building",
+      "paint": {
+        "fill-color": "#00ffff",
+        "fill-opacity": 0.4
+      }
+    }
+  ]
+}

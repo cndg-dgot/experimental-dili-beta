@@ -1,4 +1,4 @@
-# 🗾 S_0604-374 Dataset - PMTiles Converter
+# 🇹🇱 S_0604-374 Dataset - PMTiles Converter
 
 A project to convert Esri File Geodatabase to PMTiles format vector tiles and display them interactively on the web using MapLibre GL JS and Apple Pkl for style generation.
 
@@ -385,6 +385,39 @@ make generate-style       # Generate style.json from Pkl
 
 #### PMTiles Inspection
 Use [pmtiles.io](https://pmtiles.io/#url=https%3A%2F%2Fcndg-dgot.github.io%2Fexperimental-dili-beta%2Fa.pmtiles&map=14.32/-8.56292/125.54093) for interactive inspection.
+
+## 🛠️ Recent Updates
+
+### July 15, 2025
+- Integrated a unified toggle and legend system in `index.html` for better user experience.
+- Adjusted `style.json` to improve visual clarity with updated background color and layer opacity.
+- Enhanced documentation to reflect recent changes in the web viewer design.
+
+### Features Added
+- Unified toggle and legend system for layer visibility and color representation.
+- Improved background color (#222) for better contrast.
+- Adjusted opacity of `projectBuildingsLayer` to 0.4 for better overlap visualization.
+
+## 🌐 Overlay Project
+
+The `overlay` project is a web-based viewer designed to compare building data from the `S_0604-374.gdb` dataset with OpenStreetMap building data. It utilizes MapLibre GL JS for rendering and PMTiles for efficient vector tile handling.
+
+### Key Features
+- **Layer Comparison**: Toggle visibility of project and OpenStreetMap building layers.
+- **Unified Legend and Toggle**: Integrated system for layer visibility and color representation.
+- **Custom Styling**: Background color and layer opacity adjustments for enhanced visual clarity.
+
+### File Structure
+- `docs/overlay/index.html`: Main entry point for the web viewer.
+- `docs/overlay/style.json`: Contains style definitions for layers and map appearance.
+
+### Recent Updates
+- Unified toggle and legend system for better user experience.
+- Adjusted background color (#222) and layer opacity for improved overlap visualization.
+
+### Access the Viewer
+
+You can access the overlay viewer here: [Overlay Viewer](https://cndg-dgot.github.io/experimental-dili-beta/overlay)
 
 ## 📄 License
 

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Building Data Comparison</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.0.0/dist/maplibre-gl.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            max-width: 300px;
+        }
+
+        .map-overlay h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .map-overlay p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .layer-toggle {
+            margin: 5px 0;
+        }
+
+        .layer-toggle input {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="map-overlay">
+        <h3>Building Data Comparison</h3>
+        <p>Toggle layers to compare building data:</p>
+        <div class="layer-toggle" style="display: flex; align-items: center; margin-bottom: 10px;">
+            <input type="checkbox" id="projectBuildings" checked style="margin-right: 10px;">
+            <div style="width: 20px; height: 20px; background-color: #00ffff; margin-right: 10px;"></div>
+            <label for="projectBuildings">Project Buildings</label>
+        </div>
+        <div class="layer-toggle" style="display: flex; align-items: center;">
+            <input type="checkbox" id="osmBuildings" checked style="margin-right: 10px;">
+            <div style="width: 20px; height: 20px; background-color: #ff0000; margin-right: 10px;"></div>
+            <label for="osmBuildings">OpenStreetMap Buildings</label>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/maplibre-gl@5.0.0/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/pmtiles@latest/dist/pmtiles.js"></script>
+    <script>
+        const map = new maplibregl.Map({
+            container: 'map',
+            style: './style.json',
+            center: [125.537868, -8.559112],
+            zoom: 15.76,
+            hash: true,
+        });
+
+        const protocol = new pmtiles.Protocol();
+        maplibregl.addProtocol('pmtiles', protocol.tile);
+
+        map.on('load', () => {
+            // Toggle layers
+            document.getElementById('projectBuildings').addEventListener('change', (e) => {
+                map.setLayoutProperty('projectBuildingsLayer', 'visibility', e.target.checked ? 'visible' : 'none');
+            });
+
+            document.getElementById('osmBuildings').addEventListener('change', (e) => {
+                map.setLayoutProperty('osmBuildingsLayer', 'visibility', e.target.checked ? 'visible' : 'none');
+            });
+        });
+    </script>
+</body>
+</html>
