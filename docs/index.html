@@ -72,6 +72,46 @@
         .docs-link:hover {
             background: #005a8b;
         }
+        
+        .maplibregl-popup .maplibregl-popup-content {
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            max-width: 350px;
+        }
+        
+        .popup-content {
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .popup-content h4 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 16px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        .popup-content table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        
+        .popup-content td {
+            padding: 4px 8px;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+        
+        .popup-content td:first-child {
+            font-weight: bold;
+            color: #666;
+            width: 120px;
+        }
+        
+        .popup-content td:last-child {
+            color: #333;
+        }
     </style>
     <script src="https://unpkg.com/maplibre-gl@5.0.0/dist/maplibre-gl.js"></script>
     <script src="https://unpkg.com/pmtiles@3.0.6/dist/pmtiles.js"></script>
@@ -117,7 +157,111 @@
                     });
                 });
 
-                console.log('Map loaded successfully with PMTiles source');
+                // Feature popup functionality
+                const popup = new maplibregl.Popup({
+                    closeButton: false,
+                    closeOnClick: false
+                });
+
+                // Popup toggle state
+                let popupEnabled = true;
+                const popupToggle = document.getElementById('toggle-popup');
+                
+                popupToggle.addEventListener('change', () => {
+                    popupEnabled = popupToggle.checked;
+                    if (!popupEnabled) {
+                        popup.remove(); // Remove any existing popup
+                        map.getCanvas().style.cursor = ''; // Reset cursor
+                    }
+                });
+
+                // Get all interactive layer IDs
+                const interactiveLayers = [
+                    'building', 'roadCenterLine', 'roadArea', 'supplementaryRoadLine',
+                    'waterSurface', 'linearWaterFeature', 'contourLine', 'vegetation',
+                    'artificialCoverage', 'linearTopographicFeature', 'administrativeBoundaryArea',
+                    'geographicalNames', 'structures_ln', 'facility', 'structures_pt',
+                    'linearfacility', 'roadAreaattribute', 'pointTopographicFeature',
+                    'geodeticReference'
+                ];
+
+                // Mouse enter event - show popup on hover
+                interactiveLayers.forEach(layerId => {
+                    map.on('mouseenter', layerId, (e) => {
+                        if (!popupEnabled) return; // Skip if popup is disabled
+                        
+                        map.getCanvas().style.cursor = 'pointer';
+                        
+                        const feature = e.features[0];
+                        if (!feature) return;
+
+                        const coordinates = e.lngLat;
+                        const properties = feature.properties;
+                        
+                        // Create popup content
+                        let content = `<div class="popup-content">`;
+                        content += `<h4>${layerId.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</h4>`;
+                        content += `<table>`;
+                        
+                        // Show key properties
+                        Object.entries(properties).forEach(([key, value]) => {
+                            if (value !== null && value !== undefined && value !== '') {
+                                // Truncate long values
+                                const displayValue = String(value).length > 50 
+                                    ? String(value).substring(0, 50) + '...' 
+                                    : String(value);
+                                content += `<tr><td>${key}:</td><td>${displayValue}</td></tr>`;
+                            }
+                        });
+                        
+                        content += `</table></div>`;
+
+                        popup.setLngLat(coordinates)
+                            .setHTML(content)
+                            .addTo(map);
+                    });
+
+                    // Mouse leave event - hide popup
+                    map.on('mouseleave', layerId, () => {
+                        if (!popupEnabled) return; // Skip if popup is disabled
+                        
+                        map.getCanvas().style.cursor = '';
+                        popup.remove();
+                    });
+                });
+
+                // Click event - show detailed popup
+                map.on('click', (e) => {
+                    if (!popupEnabled) return; // Skip if popup is disabled
+                    
+                    const features = map.queryRenderedFeatures(e.point);
+                    if (features.length === 0) return;
+
+                    const feature = features[0];
+                    const properties = feature.properties;
+                    
+                    let content = `<div class="popup-content">`;
+                    content += `<h4>📍 Feature Details</h4>`;
+                    content += `<table>`;
+                    content += `<tr><td>Layer:</td><td><strong>${feature.layer.id}</strong></td></tr>`;
+                    content += `<tr><td>Type:</td><td>${feature.geometry.type}</td></tr>`;
+                    
+                    // Show all properties
+                    Object.entries(properties).forEach(([key, value]) => {
+                        if (value !== null && value !== undefined && value !== '') {
+                            content += `<tr><td>${key}:</td><td>${String(value)}</td></tr>`;
+                        }
+                    });
+                    
+                    content += `</table></div>`;
+
+                    new maplibregl.Popup()
+                        .setLngLat(e.lngLat)
+                        .setHTML(content)
+                        .addTo(map);
+                });
+
+                console.log('Map loaded successfully with PMTiles source and popup functionality');
             });
 
             // Add navigation controls
@@ -162,6 +306,14 @@
             <div class="layer-toggle">
                 <input type="checkbox" id="toggle-contours" checked>
                 <label for="toggle-contours">Contours</label>
+            </div>
+            
+            <div style="margin-top: 15px; padding-top: 10px; border-top: 1px solid #eee;">
+                <h4 style="margin: 0 0 8px 0; font-size: 14px;">Feature Info</h4>
+                <div class="layer-toggle">
+                    <input type="checkbox" id="toggle-popup" checked>
+                    <label for="toggle-popup">Show feature details on hover/click</label>
+                </div>
             </div>
         </div>
     </div>

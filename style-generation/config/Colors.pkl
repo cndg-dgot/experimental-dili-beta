@@ -29,6 +29,7 @@ transportation: Mapping<String, String> = new {
   ["roadArea"] = "#ffffff"
   ["roadAreaOutline"] = "#cccccc"
   ["supplementary"] = "#f0f0f0"
+  ["roadCenterLineYellow"] = "#fff9c4" // 薄黄色
 }
 
 /// Reference and administrative colors
@@ -36,7 +37,7 @@ reference: Mapping<String, String> = new {
   ["administrative"] = "#ff6b6b"
   ["geodetic"] = "#e74c3c"
   ["geographical"] = "#4169E1"
-  ["contour"] = "#8B4513"
+  ["contour"] = "#8B5A2B" // 国土地理院等高線標準色
 }
 
 /// Point of interest colors

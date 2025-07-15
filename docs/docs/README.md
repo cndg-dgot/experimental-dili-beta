@@ -38,6 +38,9 @@ This project adopts the following architecture:
 
 ### Style Generation
 - **Apple Pkl**: Type-safe and modular MapLibre GL style generation
+- **Modern MapLibre GL**: All styles use `interpolate` expressions instead of deprecated `stops`
+- **Japan GSI Standards**: Contour lines use official Japan Geospatial Survey Institute colors (#8B5A2B)
+- **Optimized Layer Ordering**: Cartographically correct stacking (e.g., contours between base and buildings)
 - **Configuration Files**:
   - `style-generation/config/Colors.pkl`: Color settings
   - `style-generation/config/Sources.pkl`: Data source settings
@@ -45,7 +48,12 @@ This project adopts the following architecture:
   - `style-generation/style.pkl`: Main style configuration
 
 ### Web Map Viewer
-- **MapLibre GL JS**: Interactive map rendering
+- **MapLibre GL JS**: Interactive map rendering with feature inspection popups
+- **Modern Styling**: Uses `interpolate` expressions for future-proof MapLibre GL compatibility
+- **Interactive Features**: 
+  - Hover/click popups for feature attribute inspection
+  - Layer visibility toggles
+  - Navigation and geolocation controls
 - **GitHub Pages**: Static hosting
 
 ### Automation

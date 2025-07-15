@@ -78,6 +78,33 @@
       }
     },
     {
+      "id": "contourLine",
+      "type": "line",
+      "source": "pmtiles",
+      "source-layer": "contourLine",
+      "paint": {
+        "line-color": "#8B5A2B",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          0.5,
+          14,
+          1
+        ],
+        "line-opacity": 1
+      },
+      "metadata": {
+        "z-order": 4
+      }
+    },
+    {
       "id": "building",
       "type": "fill",
       "source": "pmtiles",
@@ -92,28 +119,30 @@
       }
     },
     {
-      "id": "contourLine",
+      "id": "roadCenterLine",
       "type": "line",
       "source": "pmtiles",
-      "source-layer": "contourLine",
+      "source-layer": "roadCenterLine",
       "paint": {
-        "line-color": "#8B4513",
-        "line-width": {
-          "stops": [
-            [
-              10,
-              0.5
-            ],
-            [
-              14,
-              1
-            ]
-          ]
-        },
-        "line-opacity": 0.6
+        "line-color": "#fff9c4",
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            2
+          ],
+          [
+            "zoom"
+          ],
+          6,
+          1,
+          22,
+          96
+        ],
+        "line-opacity": 0.5
       },
       "metadata": {
-        "z-order": 21
+        "z-order": 27
       }
     },
     {
@@ -123,18 +152,20 @@
       "source-layer": "linearWaterFeature",
       "paint": {
         "line-color": "#4a90e2",
-        "line-width": {
-          "stops": [
-            [
-              10,
-              1
-            ],
-            [
-              14,
-              3
-            ]
-          ]
-        }
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          1,
+          14,
+          3
+        ]
       },
       "metadata": {
         "z-order": 22
@@ -147,18 +178,20 @@
       "source-layer": "linearTopographicFeature",
       "paint": {
         "line-color": "#8B4513",
-        "line-width": {
-          "stops": [
-            [
-              10,
-              0.5
-            ],
-            [
-              14,
-              1.5
-            ]
-          ]
-        },
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          0.5,
+          14,
+          1.5
+        ],
         "line-opacity": 0.7
       },
       "metadata": {
@@ -172,18 +205,20 @@
       "source-layer": "administrativeBoundaryArea",
       "paint": {
         "line-color": "#ff6b6b",
-        "line-width": {
-          "stops": [
-            [
-              10,
-              1
-            ],
-            [
-              14,
-              3
-            ]
-          ]
-        },
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          1,
+          14,
+          3
+        ],
         "line-dasharray": [
           3,
           3
@@ -215,18 +250,20 @@
       "source-layer": "supplementaryRoadLine",
       "paint": {
         "line-color": "#f0f0f0",
-        "line-width": {
-          "stops": [
-            [
-              10,
-              0.5
-            ],
-            [
-              14,
-              2
-            ]
-          ]
-        },
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          0.5,
+          14,
+          2
+        ],
         "line-dasharray": [
           2,
           2
@@ -237,85 +274,26 @@
       }
     },
     {
-      "id": "roadCenterLine-casing",
-      "type": "line",
-      "source": "pmtiles",
-      "source-layer": "roadCenterLine",
-      "paint": {
-        "line-color": "#cccccc",
-        "line-width": {
-          "stops": [
-            [
-              10,
-              2
-            ],
-            [
-              14,
-              6
-            ]
-          ]
-        },
-        "line-gap-width": {
-          "stops": [
-            [
-              10,
-              1
-            ],
-            [
-              14,
-              4
-            ]
-          ]
-        }
-      },
-      "metadata": {
-        "z-order": 27
-      }
-    },
-    {
-      "id": "roadCenterLine",
-      "type": "line",
-      "source": "pmtiles",
-      "source-layer": "roadCenterLine",
-      "paint": {
-        "line-color": "#ffffff",
-        "line-width": {
-          "stops": [
-            [
-              10,
-              1
-            ],
-            [
-              14,
-              4
-            ]
-          ]
-        },
-        "line-opacity": 0.9
-      },
-      "metadata": {
-        "z-order": 27
-      }
-    },
-    {
       "id": "structures_ln",
       "type": "line",
       "source": "pmtiles",
       "source-layer": "structures_ln",
       "paint": {
         "line-color": "#666666",
-        "line-width": {
-          "stops": [
-            [
-              10,
-              1
-            ],
-            [
-              14,
-              2
-            ]
-          ]
-        }
+        "line-width": [
+          "interpolate",
+          [
+            "exponential",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          1,
+          14,
+          2
+        ]
       },
       "metadata": {
         "z-order": 28
@@ -330,23 +308,22 @@
         "visibility": "visible"
       },
       "paint": {
-        "circle-radius": {
-          "base": 1,
-          "stops": [
-            [
-              12,
-              2
-            ],
-            [
-              16,
-              3
-            ],
-            [
-              20,
-              4
-            ]
-          ]
-        },
+        "circle-radius": [
+          "interpolate",
+          [
+            "exponential",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          2,
+          16,
+          3,
+          20,
+          4
+        ],
         "circle-color": "#e74c3c",
         "circle-stroke-width": 1.5,
         "circle-stroke-color": "#000000",
@@ -362,23 +339,22 @@
         "visibility": "visible"
       },
       "paint": {
-        "circle-radius": {
-          "base": 1.1,
-          "stops": [
-            [
-              10,
-              2
-            ],
-            [
-              14,
-              3
-            ],
-            [
-              18,
-              5
-            ]
-          ]
-        },
+        "circle-radius": [
+          "interpolate",
+          [
+            "exponential",
+            1.1
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          2,
+          14,
+          3,
+          18,
+          5
+        ],
         "circle-color": "#8B4513",
         "circle-stroke-width": 1,
         "circle-stroke-color": "#757575",
@@ -394,23 +370,22 @@
         "visibility": "visible"
       },
       "paint": {
-        "circle-radius": {
-          "base": 1,
-          "stops": [
-            [
-              13,
-              1.5
-            ],
-            [
-              17,
-              2.5
-            ],
-            [
-              20,
-              3.5
-            ]
-          ]
-        },
+        "circle-radius": [
+          "interpolate",
+          [
+            "exponential",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          13,
+          1.5,
+          17,
+          2.5,
+          20,
+          3.5
+        ],
         "circle-color": "#ffffff",
         "circle-stroke-width": 0.5,
         "circle-stroke-color": "#616161",
@@ -426,23 +401,22 @@
         "visibility": "visible"
       },
       "paint": {
-        "circle-radius": {
-          "base": 1,
-          "stops": [
-            [
-              14,
-              2
-            ],
-            [
-              18,
-              3
-            ],
-            [
-              22,
-              4
-            ]
-          ]
-        },
+        "circle-radius": [
+          "interpolate",
+          [
+            "exponential",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          14,
+          2,
+          18,
+          3,
+          22,
+          4
+        ],
         "circle-color": "#ff9500",
         "circle-stroke-width": 1,
         "circle-stroke-color": "#666666",
@@ -458,23 +432,22 @@
         "visibility": "visible"
       },
       "paint": {
-        "circle-radius": {
-          "base": 1.1,
-          "stops": [
-            [
-              12,
-              2
-            ],
-            [
-              16,
-              4
-            ],
-            [
-              20,
-              6
-            ]
-          ]
-        },
+        "circle-radius": [
+          "interpolate",
+          [
+            "exponential",
+            1.1
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          2,
+          16,
+          4,
+          20,
+          6
+        ],
         "circle-color": "#666666",
         "circle-stroke-width": 0.5,
         "circle-stroke-color": "#ffffff",
@@ -490,23 +463,22 @@
         "visibility": "visible"
       },
       "paint": {
-        "circle-radius": {
-          "base": 1.2,
-          "stops": [
-            [
-              10,
-              3
-            ],
-            [
-              14,
-              6
-            ],
-            [
-              18,
-              10
-            ]
-          ]
-        },
+        "circle-radius": [
+          "interpolate",
+          [
+            "exponential",
+            1.2
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          3,
+          14,
+          6,
+          18,
+          10
+        ],
         "circle-color": "#ff9500",
         "circle-stroke-width": 1,
         "circle-stroke-color": "#ffffff",

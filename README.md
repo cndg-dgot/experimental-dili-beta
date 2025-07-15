@@ -146,6 +146,8 @@ The `build` target automatically generates both PMTiles and style.json, ensuring
 - **Maintainability**: Easy to update colors, layer ordering, or styling rules
 - **Documentation**: Self-documenting configuration with built-in comments
 - **Validation**: Early error detection before runtime
+- **Modern MapLibre GL**: All layers use `interpolate` expressions instead of deprecated `stops`
+- **Future-Proof**: Compatible with latest MapLibre GL specifications and best practices
 
 ## 🎯 Makefile Commands
 
@@ -234,6 +236,10 @@ tippecanoe \
 ### Main Viewer (`docs/index.html`)
 - **Interactive Map**: Using MapLibre GL JS v5.0.0
 - **Layer Controls**: Toggle display of buildings, roads, water, contours
+- **Feature Inspection**: Interactive popup display of feature attributes
+  - **Hover**: Brief property display on mouse hover
+  - **Click**: Detailed feature information with layer and geometry type
+  - **Toggle Control**: Enable/disable popup functionality
 - **Navigation**: Zoom, pan, geolocation
 - **Responsive Design**: Desktop and mobile compatible
 - **PMTiles Protocol**: Direct access to cloud-native tile format
@@ -242,8 +248,13 @@ tippecanoe \
 ### Style Definition (`docs/style.json`)
 - **All 20 Layers Supported**: Appropriate visualization for each layer
 - **Pkl-Generated**: Type-safe style generation using Apple Pkl
+- **Modern MapLibre GL**: Uses `interpolate` expressions instead of deprecated `stops`
 - **Zoom Responsive**: Style adjustments based on zoom level
-- **Color Coding**: Intuitive colors based on layer type and usage
+- **Color Coding**: 
+  - Contour lines: Japan GSI standard color (#8B5A2B)
+  - Road centerlines: Semi-transparent yellow with exponential width scaling
+  - Layer-appropriate colors based on cartographic principles
+- **Optimized Layer Ordering**: Contours between base layers and buildings
 - **Performance Optimized**: Building layer only visible at zoom 14
 
 ## 📱 GitHub Pages Deployment
@@ -390,4 +401,4 @@ Bug reports and feature improvement suggestions are welcome via GitHub Issues.
 ---
 
 **Created**: July 9, 2025  
-**Last Updated**: July 12, 2025
+**Last Updated**: July 15, 2025

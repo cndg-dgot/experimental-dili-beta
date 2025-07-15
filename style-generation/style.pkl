@@ -47,8 +47,14 @@ style: Mapping = new {
     
     // Infrastructure layers (polygons + lines)  
     ...InfrastructureLayers.infrastructureLayers
-    
-    // Linear layers (lines)
+
+    // Contour line (topographic) - just before building
+    ...List(LinearLayers.exportedContourLine)
+
+    // Building footprints
+    ...List(InfrastructureLayers.exportedBuilding)
+
+    // Other linear layers (lines)
     ...LinearLayers.linearLayers
     
     // Point layers (points)

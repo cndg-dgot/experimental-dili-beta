@@ -16,14 +16,12 @@ facilityLayer: Mapping = new {
     ["visibility"] = "visible"
   }
   ["paint"] = new {
-    ["circle-radius"] = new {
-      ["base"] = 1.2
-      ["stops"] = List(
-        List(10, 3),
-        List(14, 6), 
-        List(18, 10)
-      )
-    }
+    ["circle-radius"] = List(
+      "interpolate", List("exponential", 1.2), List("zoom"),
+      10, 3,
+      14, 6,
+      18, 10
+    )
     ["circle-color"] = Colors.facilityColor
     ["circle-stroke-width"] = 1
     ["circle-stroke-color"] = Colors.white
@@ -41,14 +39,12 @@ structuresPointLayer: Mapping = new {
     ["visibility"] = "visible"
   }
   ["paint"] = new {
-    ["circle-radius"] = new {
-      ["base"] = 1.1
-      ["stops"] = List(
-        List(12, 2),
-        List(16, 4),
-        List(20, 6)
-      )
-    }
+    ["circle-radius"] = List(
+      "interpolate", List("exponential", 1.1), List("zoom"),
+      12, 2,
+      16, 4,
+      20, 6
+    )
     ["circle-color"] = Colors.infrastructureColor
     ["circle-stroke-width"] = 0.5
     ["circle-stroke-color"] = Colors.white
@@ -66,14 +62,12 @@ linearFacilityLayer: Mapping = new {
     ["visibility"] = "visible"
   }
   ["paint"] = new {
-    ["circle-radius"] = new {
-      ["base"] = 1
-      ["stops"] = List(
-        List(14, 2),
-        List(18, 3),
-        List(22, 4)
-      )
-    }
+    ["circle-radius"] = List(
+      "interpolate", List("exponential", 1), List("zoom"),
+      14, 2,
+      18, 3,
+      22, 4
+    )
     ["circle-color"] = Colors.facilityColor
     ["circle-stroke-width"] = 1
     ["circle-stroke-color"] = Colors.infrastructureColor
@@ -91,14 +85,12 @@ roadAreaAttributeLayer: Mapping = new {
     ["visibility"] = "visible"
   }
   ["paint"] = new {
-    ["circle-radius"] = new {
-      ["base"] = 1
-      ["stops"] = List(
-        List(13, 1.5),
-        List(17, 2.5),
-        List(20, 3.5)
-      )
-    }
+    ["circle-radius"] = List(
+      "interpolate", List("exponential", 1), List("zoom"),
+      13, 1.5,
+      17, 2.5,
+      20, 3.5
+    )
     ["circle-color"] = Colors.roadColor
     ["circle-stroke-width"] = 0.5
     ["circle-stroke-color"] = Colors.gray700
@@ -116,14 +108,12 @@ pointTopographicFeatureLayer: Mapping = new {
     ["visibility"] = "visible"
   }
   ["paint"] = new {
-    ["circle-radius"] = new {
-      ["base"] = 1.1
-      ["stops"] = List(
-        List(10, 2),
-        List(14, 3),
-        List(18, 5)
-      )
-    }
+    ["circle-radius"] = List(
+      "interpolate", List("exponential", 1.1), List("zoom"),
+      10, 2,
+      14, 3,
+      18, 5
+    )
     ["circle-color"] = Colors.naturalColor
     ["circle-stroke-width"] = 1
     ["circle-stroke-color"] = Colors.gray600
@@ -141,14 +131,12 @@ geodeticReferenceLayer: Mapping = new {
     ["visibility"] = "visible"
   }
   ["paint"] = new {
-    ["circle-radius"] = new {
-      ["base"] = 1
-      ["stops"] = List(
-        List(12, 2),
-        List(16, 3),
-        List(20, 4)
-      )
-    }
+    ["circle-radius"] = List(
+      "interpolate", List("exponential", 1), List("zoom"),
+      12, 2,
+      16, 3,
+      20, 4
+    )
     ["circle-color"] = Colors.referenceColor
     ["circle-stroke-width"] = 1.5
     ["circle-stroke-color"] = Colors.black

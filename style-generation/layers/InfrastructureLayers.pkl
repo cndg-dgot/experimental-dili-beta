@@ -35,11 +35,11 @@ building: Mapping = new {
   }
 }
 
-/// All infrastructure layers in render order
+/// All infrastructure layers in render order（buildingは個別エクスポート）
 infrastructureLayers: List = List(
-  roadArea,
-  building
+  roadArea
 )
+exportedBuilding: Mapping = building
 
 /// Legacy alias
 all: List = infrastructureLayers
